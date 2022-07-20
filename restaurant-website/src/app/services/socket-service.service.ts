@@ -21,7 +21,7 @@ export class SocketService {
     {
       id: 'c92a574c98634a70998b71d110f51fd5',
       body: 'Avocado Chicken Salad',
-      image: '../../assets/avocadosalad.jpeg',
+      image: '../../assets/salad.jpeg',
       alt: 'Avocado Chicken Salad',
       price: '40.00',
     },
@@ -42,7 +42,7 @@ export class SocketService {
     {
       id: '4226d4f1e91e404880345bc18be88e5b',
       body: 'Potato Salad',
-      image: '../../assets/banku.jpeg',
+      image: '../../assets/potatosalad.jpeg',
       alt: 'Potato Salad',
       price: '40.00',
     },
@@ -91,7 +91,7 @@ export class SocketService {
     {
       id: 'c4d3ddc886c540149323387915598851',
       body: 'Watermelon Juice (Very Fresh n Pure) No Sugar Added',
-      image: '../../assets/ginger.jpeg',
+      image: '../../assets/watermeloon.jpeg',
       alt: 'Watermelon Juice',
       price: '20.00',
     },
