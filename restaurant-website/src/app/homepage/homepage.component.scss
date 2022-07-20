@@ -111,7 +111,7 @@
         rgba(0, 0, 0, 0.5),
         rgba(0, 0, 0, 0.8)
       ),
-      url("../../assets/banku.jpeg");
+      url("../../assets/salad.jpeg");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -136,11 +136,15 @@
         }
       }
       .text_base {
-        font-family: "Neonderthaw", cursive;
+        font-family: "Carter One", cursive;
         font-size: 5rem;
         text-transform: capitalize;
         margin: 0;
         text-align: center;
+        background-color: #7ee8fa;
+        background-image: linear-gradient(315deg, #7ee8fa 0%, #80ff72 74%);
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
         @media screen and (max-width: 400px) {
           font-size: 2rem;
         }
@@ -158,11 +162,11 @@
 
       .body__intro__buttons {
         .our__menu {
-          background-color: #fe4066;
+          background-color: #ffffff;
           border-radius: 10px;
           cursor: pointer;
           border: none;
-          color: #ffffff;
+          color: #000000;
           text-transform: uppercase;
           font-weight: bold;
           font-size: 1rem;
@@ -171,7 +175,8 @@
           font-weight: bold;
           transition: background-color 200ms ease-in;
           &:hover {
-            background-color: #f05170;
+            background-color: #2a590c;
+            color: #ffffff;
           }
         }
       }
@@ -194,7 +199,7 @@
   text-transform: uppercase;
   padding: 1rem 0rem;
   margin-top: 4rem;
-  color: rgb(31 41 55);
+  color: #2a590c;
 }
 
 .menu__container {
@@ -238,7 +243,7 @@
       justify-content: space-between;
       align-items: center;
       button {
-        background: rgb(31 41 55);
+        background: #2a590c;
         border-radius: 10px;
         display: inline-block;
         cursor: pointer;

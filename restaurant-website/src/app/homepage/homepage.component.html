@@ -2,7 +2,7 @@
   <div class="top">
     <nav class="navbar">
       <div class="navbar__logo">
-        <img src="../../assets/shorrHeavenLogo.png" alt="company logo" />
+        <img src="../../assets/logo.png" alt="company logo" />
       </div>
       <div class="navbar__links">
         <ul>
@@ -19,10 +19,12 @@
     </div>
     <div class="body">
       <div class="body__intro" id="home">
-        <p class="text_base">Welcome to Shorr's Kitchen</p>
+        <p class="text_base">Welcome to Crave Salads</p>
         <p class="text">
-          Scan through our wide range of menus, choose what you want, place your
-          order and have it delivered to you anywhere in Accra.
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore
+          maiores nesciunt illo odit? Officiis earum eveniet fugiat, ab id amet
+          autem deserunt unde? Quisquam asperiores saepe, dolorum cumque aperiam
+          quidem.
         </p>
         <div class="body__intro__buttons">
           <a href="#menu">
@@ -34,9 +36,9 @@
   </div>
   <div class="body__menu" id="menu">
     <h1 class="menu__heading">Our Menu</h1>
-    <div class="loader" *ngIf="!(item$ | async)"></div>
-    <div class="menu__container" *ngIf="item$ | async">
-      <div class="menu__meal__card" *ngFor="let item of item$ | async">
+
+    <div class="menu__container">
+      <div class="menu__meal__card" *ngFor="let item of menu">
         <div class="card__image">
           <img src="{{ item.image }}" alt="{{ item.body }}" />
         </div>
