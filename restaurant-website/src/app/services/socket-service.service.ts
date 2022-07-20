@@ -91,7 +91,7 @@ export class SocketService {
     {
       id: 'c4d3ddc886c540149323387915598851',
       body: 'Watermelon Juice (Very Fresh n Pure) No Sugar Added',
-      image: '../../assets/watermeloon.jpeg',
+      image: '../../assets/watermelon.jpeg',
       alt: 'Watermelon Juice',
       price: '20.00',
     },
