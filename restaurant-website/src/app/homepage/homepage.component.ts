@@ -1,3 +1,4 @@
+import { Food } from './../models/interface';
 import { Firestore } from '@angular/fire/firestore';
 import { SocketService } from './../services/socket-service.service';
 import { Component, OnInit } from '@angular/core';
@@ -15,7 +16,7 @@ import { AngularFirestore } from '@angular/fire/compat/firestore';
 })
 export class HomepageComponent implements OnInit {
   private socket: any;
-  item$: Observable<FirebaseFood[]>;
+  menu: Food[] = [];
   firestore: any;
   constructor(
     private router: Router,
@@ -25,8 +26,7 @@ export class HomepageComponent implements OnInit {
   ) {
     this.socket = io('https://mbfoodsapi.azurewebsites.net/');
     // this.socket = io('http://localhost:8000/');
-    this.item$ = this.onGetAllFoods();
-    this.item$.subscribe((res) => this.socketService.setFoodArray(res));
+    this.menu = this.socketService.getAllFoods();
   }
 
   foodArray: any;
