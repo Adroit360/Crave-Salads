@@ -1,4 +1,3 @@
-import { FirebaseFood, OrderDetails } from './../models/interface';
 import { SocketService } from './../services/socket-service.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
@@ -14,7 +13,12 @@ import { Observable, throwError } from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';
 import { HttpHeaders } from '@angular/common/http';
 import { io } from 'socket.io-client';
-import { PaymentResponse, Order, Food } from '../models/interface';
+import {
+  PaymentResponse,
+  Order,
+  OrderDetails,
+  Food,
+} from '../models/interface';
 import { v4 as uuidv4 } from 'uuid';
 import { cities } from '../models/accra';
 import { DomSanitizer } from '@angular/platform-browser';
@@ -94,7 +98,7 @@ export class OrderPageComponent implements OnInit {
     window.scroll(0, 0);
     this.route.paramMap.subscribe((params) => {
       const id: any = params.get('id');
-      const data: FirebaseFood = this.socketService.getFoodByID(id);
+      const data: Food = this.socketService.getFoodByID(id);
       this.price = data.price;
       this.priceOfFood = data.price;
       this.orderForm.patchValue({
@@ -339,7 +343,7 @@ export class OrderPageComponent implements OnInit {
   }
 
   addFood(id: string): void {
-    const data: FirebaseFood = this.socketService.getFoodByID(id);
+    const data: Food = this.socketService.getFoodByID(id);
     this.foodsOrdered.push({
       id,
       foodName: data.body,
