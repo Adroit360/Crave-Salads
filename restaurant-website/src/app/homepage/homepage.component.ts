@@ -24,7 +24,7 @@ export class HomepageComponent implements OnInit {
     private http: HttpClient,
     private fireStore: AngularFirestore
   ) {
-    this.socket = io('https://mbfoodsapi.azurewebsites.net/');
+    this.socket = io('https://lebenebeansapi.azurewebsites.net/');
     // this.socket = io('http://localhost:8000/');
     this.menu = this.socketService.getAllFoods();
   }
@@ -43,7 +43,7 @@ export class HomepageComponent implements OnInit {
 
   ngOnInit(): void {
     this.http
-      .get('https://mbfoodsapi.azurewebsites.net/')
+      .get('https://lebenebeansapi.azurewebsites.net/')
       .subscribe((res: any) => {
         this.orderStatus = res.orderStatus;
         if (this.orderStatus) {

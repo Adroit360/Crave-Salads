@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { Firestore, collectionData, collection } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
@@ -11,27 +11,14 @@ import { OrderType } from '../single-order/single-order.component';
   styleUrls: ['./failed-orders.component.scss'],
 })
 export class FailedOrdersComponent implements OnInit {
-  item$: Observable<OrderDetailsAdmin[]>;
+  @Input() failedOrders: OrderDetailsAdmin[] = [] as OrderDetailsAdmin[];
   OrderType = OrderType;
   data: any;
-  constructor(private firestore: AngularFirestore) {
-    this.item$ = this.exampleGetCollection();
-  }
+  constructor(private firestore: AngularFirestore) {}
 
   success: boolean = false;
 
   ngOnInit(): void {}
-
-  exampleGetCollection(): Observable<any> {
-    return this.firestore
-      .collection('orders', (orders) =>
-        orders
-          .where('completed', '==', false)
-          .where('orderPaid', '==', false)
-          .orderBy('date', 'desc')
-      )
-      .valueChanges({ idField: 'Id' });
-  }
 
   onOrderDelivered(id: string, orderId: string): void {
     if (window.confirm(`Are you sure you want to comfirm oder: ${orderId}?`)) {
@@ -56,9 +43,5 @@ export class FailedOrdersComponent implements OnInit {
 
   deleteOrder(id: string): Promise<void> {
     return this.firestore.collection('orders').doc(id).delete();
-  }
-
-  onDeleteAllFailedOrders() {
-    this.exampleGetCollection().subscribe((res) => {});
   }
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { Firestore, collectionData, collection } from '@angular/fire/firestore';
 import { Observable, Subscription, tap } from 'rxjs';
@@ -19,26 +19,13 @@ interface Order {
   styleUrls: ['./display-page.component.scss'],
 })
 export class DisplayPageComponent implements OnInit {
-  item$: Observable<OrderDetailsAdmin[]>;
-  food$: Observable<FirebaseFood[]>;
+  @Input() foodsOrdered: OrderDetailsAdmin[] = [] as OrderDetailsAdmin[];
   OrderType = OrderType;
   notificationAudio = new Audio('../../assets/Short-notification-sound.mp3');
   isFirstTime = true;
   itemLength: number = 0;
   subscriptions: Subscription[] = [];
-  constructor(private firestore: AngularFirestore) {
-    this.item$ = this.exampleGetCollection();
-    this.food$ = this.onGetAllFoods();
-    let itemSubs = this.item$.subscribe((res) => {
-      if (!this.isFirstTime && res.length > this.itemLength)
-        this.notificationAudio.play();
-      else this.isFirstTime = false;
-
-      this.itemLength = res.length;
-    });
-
-    this.subscriptions.push(itemSubs);
-  }
+  constructor(private firestore: AngularFirestore) {}
 
   success: boolean = false;
 
@@ -48,17 +35,6 @@ export class DisplayPageComponent implements OnInit {
     //Called once, before the instance is destroyed.
     //Add 'implements OnDestroy' to the class.
     this.subscriptions.forEach((sub) => sub?.unsubscribe());
-  }
-
-  exampleGetCollection(): Observable<any> {
-    return this.firestore
-      .collection('orders', (orders) =>
-        orders
-          .where('completed', '==', false)
-          .where('orderPaid', '==', true)
-          .orderBy('date', 'desc')
-      )
-      .valueChanges({ idField: 'Id' });
   }
 
   onOrderDelivered(id: string, orderId: string): void {
@@ -84,17 +60,5 @@ export class DisplayPageComponent implements OnInit {
 
   deleteOrder(id: string): Promise<void> {
     return this.firestore.collection('orders').doc(id).delete();
-  }
-  onGetAllFoods(): Observable<any> {
-    return this.firestore.collection('menu').valueChanges({ idField: 'id' });
-  }
-
-  onUpdateFoodStatus(id: string, data: { status: boolean }): void {
-    this.firestore.collection('menu').doc(id).update(data);
-  }
-
-  onCheckboxChange(id: string, event: Event): void {
-    const isChecked = (<HTMLInputElement>event.target).checked;
-    this.onUpdateFoodStatus(id, { status: isChecked });
   }
 }

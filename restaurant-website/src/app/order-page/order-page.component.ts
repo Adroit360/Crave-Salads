@@ -52,7 +52,7 @@ export class OrderPageComponent implements OnInit {
     private route: ActivatedRoute,
     public domSanitizer: DomSanitizer
   ) {
-    this.socket = io('https://mbfoodsapi.azurewebsites.net/');
+    this.socket = io('https://lebenebeansapi.azurewebsites.net/');
     // this.socket = io('http://localhost:8000/');
     this.foodArray = this.socketService.getAllFoods();
   }
@@ -76,7 +76,7 @@ export class OrderPageComponent implements OnInit {
   public data: any;
   modalOpen = false;
 
-  url = 'https://mbfoodsapi.azurewebsites.net//paystack/payment';
+  url = 'https://lebenebeansapi.azurewebsites.net/paystack/payment';
   //url = 'http://localhost:8000/paystack/payment';
 
   paymentError = false;
@@ -190,8 +190,8 @@ export class OrderPageComponent implements OnInit {
 
     this.loading = true;
     const body = {
-      amount: this.totalPrice * 100,
-      // amount: 0.01 * 100,
+      // amount: this.totalPrice * 100,
+      amount: 0.01 * 100,
       clientId: this.clientTransactionId,
       orderDetails: this.orderDetails,
     };
