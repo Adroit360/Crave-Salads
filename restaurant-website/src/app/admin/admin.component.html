@@ -76,12 +76,15 @@
     </div>
   </div>
   <div class="display-page">
-    <app-display-page></app-display-page>
+    <app-display-page *ngIf="currentPage === 'orders'"></app-display-page>
 
     <!--FAILED ORDERS-->
-    <app-failed-orders></app-failed-orders>
+    <app-failed-orders *ngIf="currentPage === 'failed'"></app-failed-orders>
 
     <!--completed orders-->
-    <app-completed-orders></app-completed-orders>
+    <app-completed-orders
+      *ngIf="currentPage === 'delivered'"
+      [deliveredOrders]="deliveredOrders"
+    ></app-completed-orders>
   </div>
 </div>
