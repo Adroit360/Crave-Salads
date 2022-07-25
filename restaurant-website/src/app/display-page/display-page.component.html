@@ -1,32 +1,8 @@
 <main class="display__container">
-  <div class="food-container">
-    <div class="food_card" *ngFor="let item of food$ | async">
-      <div
-        class="food__status"
-        [ngStyle]="{ 'background-color': item.status ? '#00b83e' : '#fe4066' }"
-      >
-        <p *ngIf="item.status">available</p>
-        <p *ngIf="!item.status">not available</p>
-      </div>
-      <div class="food_card__details">
-        <div class="food_card__header__title">
-          <p>{{ item.body }}</p>
-        </div>
-      </div>
-      <label class="switch">
-        <input
-          type="checkbox"
-          [checked]="item.status"
-          (change)="onCheckboxChange(item.id, $event)"
-        />
-        <span class="slider round"></span>
-      </label>
-    </div>
-  </div>
   <h1 class="title">Orders</h1>
   <div class="display__container__items">
     <app-single-order
-      *ngFor="let item of item$ | async"
+      *ngFor="let item of foodsOrdered"
       [item]="item"
       [orderType]="OrderType.pendingOrder"
     ></app-single-order>

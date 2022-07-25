@@ -76,15 +76,69 @@
     </div>
   </div>
   <div class="display-page">
-    <app-display-page *ngIf="currentPage === 'orders'"></app-display-page>
+    <main class="display__container" *ngIf="currentPage === 'orders'">
+      <div class="order-details">
+        <div class="card">
+          <div class="card-info">
+            <span class="card__heading">Total Orders(This month)</span>
+            <span class="card__quantity">{{ totalOrders }}</span>
+          </div>
+          <div class="card-icon">
+            <span class="material-icons"> receipt_long </span>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-info">
+            <span class="card__heading">Total Amount </span>
+            <span class="card__quantity">₵{{ totalAmount }}</span>
+          </div>
+          <div class="card-icon">
+            <span class="material-icons"> payments </span>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-info">
+            <span class="card__heading">Amount To Be Paid</span>
+            <span class="card__quantity">₵{{ amountTobePayed }}</span>
+          </div>
+          <div class="card-icon">
+            <span class="material-icons"> payments </span>
+          </div>
+        </div>
+      </div>
+      <h1 class="title">Orders</h1>
+      <div class="display__container__items">
+        <app-single-order
+          *ngFor="let item of foodOrdered"
+          [item]="item"
+          [orderType]="OrderType.pendingOrder"
+        ></app-single-order>
+      </div>
+    </main>
 
     <!--FAILED ORDERS-->
-    <app-failed-orders *ngIf="currentPage === 'failed'"></app-failed-orders>
+    <main class="display__container" *ngIf="currentPage === 'failed'">
+      <!-- <button (click)="onDeleteAllFailedOrders()">DELETE ALL FAILED ORDERS</button> -->
+      <h1 class="title">Failed and Proccessing Orders</h1>
+      <div class="display__container__items">
+        <app-single-order
+          *ngFor="let item of failedOrders"
+          [item]="item"
+          [orderType]="OrderType.failed"
+        ></app-single-order>
+      </div>
+    </main>
 
     <!--completed orders-->
-    <app-completed-orders
-      *ngIf="currentPage === 'delivered'"
-      [deliveredOrders]="deliveredOrders"
-    ></app-completed-orders>
+    <main class="display__container" *ngIf="currentPage === 'delivered'">
+      <h1 class="title">Delivered Orders</h1>
+      <div class="display__container__items">
+        <app-single-order
+          *ngFor="let item of deliveredOrders"
+          [item]="item"
+          [orderType]="OrderType.completed"
+        ></app-single-order>
+      </div>
+    </main>
   </div>
 </div>

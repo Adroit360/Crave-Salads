@@ -3,7 +3,7 @@
   <h1 class="title">Failed and Proccessing Orders</h1>
   <div class="display__container__items">
     <app-single-order
-      *ngFor="let item of item$ | async"
+      *ngFor="let item of failedOrders"
       [item]="item"
       [orderType]="OrderType.failed"
     ></app-single-order>
@@ -44,7 +44,7 @@
           </button>
         </div>
       </div>
-    </div> 
+    </div>
   </div>-->
   <!-- <ul>
     <li *ngFor="let item of item$ | async">
