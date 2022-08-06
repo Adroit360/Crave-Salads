@@ -88,7 +88,7 @@ export class AdminComponent implements OnInit {
           this.failedOrders.push(item);
         }
       });
-      this.amountTobePayed = +(this.totalAmount * 0.86).toFixed(2); // calculate 14% of the total food revenue
+      this.amountTobePayed = +(this.totalAmount * 0.8).toFixed(2); // calculate 20% of the total food revenue
     });
 
     this.subscriptions.push(itemSubs);
